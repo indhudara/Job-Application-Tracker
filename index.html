@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>JobTrack</h1>
+        <p>Manage your job applications and interviews</p>
+    </header>
+
+    <section class="stats">
+        <div class="card">
+            <h3>Total Applications</h3>
+            <h2 id="total">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Applied</h3>
+            <h2 id="applied">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Interviews</h3>
+            <h2 id="interviews">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Selected</h3>
+            <h2 id="selected">0</h2>
+        </div>
+        <div class="card">
+        <h3>Pending Follow-ups</h3>
+        <h2 id="followUps">0</h2>
+</div>
+    </section>
+
+    <section class="form-section">
+
+        <h2 id="formTitle">Add Job Application</h2>
+
+        <form id="jobForm">
+
+            <input type="hidden" id="editId">
+
+            <input type="text" id="company"
+                placeholder="Company Name" required>
+
+            <input type="text" id="role"
+                placeholder="Job Role" required>
+
+            <input type="date" id="date" required>
+
+            <select id="status">
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Selected">Selected</option>
+            </select>
+
+            <h3 class="full-width">Interview Details</h3>
+
+            <input type="date" id="interviewDate">
+
+            <select id="interviewRound">
+                <option value="">Select Interview Round</option>
+                <option value="Technical">Technical</option>
+                <option value="HR">HR</option>
+                <option value="Managerial">Managerial</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <select id="interviewMode">
+                <option value="">Select Interview Mode</option>
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+            </select>
+
+            <select id="interviewStatus">
+                <option value="">Select Interview Status</option>
+                <option value="Upcoming">Upcoming</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <textarea id="notes"
+                placeholder="Interview notes or feedback..."></textarea>
+
+            <h3 class="full-width">Follow-up Details</h3>
+
+            <label for="followUpDate">Follow-up Date</label>
+            <input type="date" id="followUpDate">
+            <button type="submit" id="submitBtn">
+                Add Application
+            </button>
+
+            <button type="button" id="cancelBtn" hidden>
+                Cancel Edit
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="applications">
+
+        <h2>My Applications</h2>
+
+        <div class="filters">
+
+            <input type="text" id="search"
+                placeholder="Search company or role...">
+
+            <select id="filterStatus">
+                <option value="All">All Status</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Selected">Selected</option>
+            </select>
+            <select id="sortDate">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+            </select>
+            <button id="exportBtn" type="button">
+                Export CSV
+            </button>
+
+        </div>
+
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Applied Date</th>
+                        <th>Status</th>
+                        <th>Interview Date</th>
+                        <th>Round</th>
+                        <th>Mode</th>
+                        <th>Interview Status</th>
+                        <th>Follow-up Date</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="jobList"></tbody>
+            </table>
+
+        </div>
+
+        <p id="emptyMessage">No applications found.</p>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
